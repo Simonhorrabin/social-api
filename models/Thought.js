@@ -1,16 +1,16 @@
-// models/User.js
+// models/Thought.js
 const mongoose = require('mongoose');
 
-const userSchema = new mongoose.Schema({
-  username: {
+const thoughtSchema = new mongoose.Schema({
+  text: {
     type: String,
-    unique: true,
     required: true,
   },
-  // Add other user-related fields here
-  friends: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
+  // Add other thought-related fields here
+  reactions: [{ type: String }],
+  userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
 });
 
-const User = mongoose.model('User', userSchema);
+const Thought = mongoose.model('Thought', thoughtSchema);
 
-module.exports = User;
+module.exports = Thought;
